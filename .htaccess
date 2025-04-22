@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Ignorar arquivos e diretórios reais
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Ignorar a pasta API (não redirecionar para index.php)
+RewriteCond %{REQUEST_URI} !^/api/ [NC]
+
+# Redirecionar tudo para index.php
+RewriteRule ^(.*)$ index.php?pagina=$1 [L,QSA]
